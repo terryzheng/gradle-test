@@ -5,7 +5,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE"
+        classpath "org.flywaydb:flyway-gradle-plugin:3.0"
     }
 }
 
@@ -13,7 +14,7 @@ apply plugin: "java"
 apply plugin: "eclipse"
 apply plugin: "idea"
 apply plugin: "spring-boot"
-//apply plugin: "flyway"
+apply plugin: "flyway"
 
 //apply plugin: 'application'
 //mainClassName = 'org.gradle.Hello'
@@ -34,21 +35,22 @@ repositories {
 
 dependencies {
 	compile "joda-time:joda-time:2.2"
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-    compile "org.springframework.boot:spring-boot-starter-web"
-//  compile "org.flywaydb:flyway-gradle-plugin:3.0"
+    compile	"commons-collections:commons-collections:3.2"
+    compile	"org.springframework.boot:spring-boot-starter-web"
+    compile	"org.flywaydb:flyway-gradle-plugin:3.0"
+    compile	"mysql:mysql-connector-java:5.+"
     testCompile "junit:junit:4.+"
 }
 
-//flyway {
-//    url = 'jdbc:mysql://172.17.4.17:3306/zhaopin?useUnicode=true&amp;characterEncoding=utf-8'
-//    initOnMigrate = true
-//    user = 'ipintest'
-//    password = 'ipintest'
-//    initVersion = 0
-//    outOfOrder = true
-//    validateOnMigrate = false
-//}
+flyway {
+    url = 'jdbc:mysql://127.0.0.1:3306/zhaopin?useUnicode=true&amp;characterEncoding=utf-8'
+//  initOnMigrate = true
+    user = 'root'
+    password = 'root'
+    initVersion = 0
+//  outOfOrder = true
+    validateOnMigrate = false
+}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '1.11'
