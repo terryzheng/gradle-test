@@ -9,36 +9,36 @@ public class Person {
 	private int age;
 	private final boolean sex;
 
-	public Person(long id, String name, boolean sex) {
-		this.id = id;
-		this.name = name;
-		this.sex = true;
+	public Person(final long i, final String n, final boolean s) {
+		this.id = i;
+		this.name = n;
+		this.sex = s;
 		new GrowthList();
 	}
 
-	public String getName() {
+	public final String getName() {
 		return name;
 	}
 
-	public int getAge() {
+	public final int getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(final int age) {
 		this.age = age;
 	}
 
-	public boolean isSex() {
+	public final boolean isSex() {
 		return sex;
 	}
 
-	public long getId() {
+	public final long getId() {
 		return id;
 	}
 
-	public String say(String word) {
+	public final String say(final String word) {
 		LocalTime currentTime = new LocalTime();
-		System.out.println("The current local time is: " + currentTime);
+		System.out.print("The current local time is: " + currentTime);
 		return word;
 	}
 }

@@ -11,6 +11,7 @@ buildscript {
 }
 
 apply plugin: "java"
+apply plugin: "checkstyle"
 apply plugin: "eclipse"
 apply plugin: "idea"
 apply plugin: "spring-boot"
@@ -50,6 +51,12 @@ flyway {
     initVersion = 0
 //  outOfOrder = true
     validateOnMigrate = false
+}
+
+checkstyle {
+    configFile = new File(project(':').projectDir, 'checkstyle.xml')
+    checkstyleMain.source = "src/main"
+    showViolations = false
 }
 
 task wrapper(type: Wrapper) {
